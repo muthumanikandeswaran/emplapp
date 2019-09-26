@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+<body style="background-color:black;">
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+   border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px ;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(odd) {
+  background-color: orange;
+}
+tr:nth-child(even) {
+  background-color: tomato;
+}
+</style>
+</head>
+<h1 style="color:white;">EMPLOYEE RECORD</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><h2 style="color:black;">NAME</h2></th>
+      <th><h2  style="color:black;">AGE</h2></th>
+      <th><h2  style="color:black;">GENDER</h></th>
+      <th><h2  style="color:black;">DESIGNATION</h2></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emps.each do |emp| %>
+      <tr>
+        <th  style="color:white;"><%= emp.name %></th>
+        <th  style="color:white;"><%= emp.age %></th>
+        <th  style="color:white;"><%= emp.gender %></th>
+        <th  style="color:white;"><%= emp.designation %></th>
+        <th  style="color:white;"><%= link_to 'Show', emp %></th>
+        <th  style="color:white;"><%= link_to 'Modify', edit_emp_path(emp) %></th>
+        <th  style="color:white;"><%= link_to 'Destroy', emp, method: :delete, data: { confirm: 'Are you sure?' } %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Emp', new_emp_path %>
+</body>
